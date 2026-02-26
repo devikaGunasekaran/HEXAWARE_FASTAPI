@@ -1,0 +1,13 @@
+from pydantic import BaseModel, ConfigDict
+from typing import Optional, List
+
+class DepartmentBase(BaseModel):
+    name: str
+    manager_id: Optional[int] = None
+
+class DepartmentCreate(DepartmentBase):
+    pass
+
+class DepartmentResponse(DepartmentBase):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
